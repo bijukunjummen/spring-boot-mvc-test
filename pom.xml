@@ -52,7 +52,19 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>           
+            </plugin>  
+			<plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.0.3.v20130506</version>
+	            <configuration>
+	                <webApp>
+	                    <contextPath>/</contextPath>
+	                </webApp>
+	                <stopKey>STOP_KEY</stopKey>
+	                <stopPort>54124</stopPort>
+	            </configuration>
+            </plugin>                     
         </plugins>
     </build>
 
