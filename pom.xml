@@ -4,15 +4,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>spring-boot-test</groupId>
 	<artifactId>spring-boot-mvc-test</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<parent>
-	    <groupId>org.springframework.boot</groupId>
-	    <artifactId>spring-boot-starter-parent</artifactId>
-	    <version>1.0.0.BUILD-SNAPSHOT</version>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.0.0.RC5</version>
 	</parent>
-
 
 	<dependencies>
 		<dependency>
@@ -36,7 +35,7 @@
 		<dependency>
 			<groupId>org.thymeleaf</groupId>
 			<artifactId>thymeleaf-spring4</artifactId>
-		</dependency>		
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -50,17 +49,9 @@
 		<repository>
 			<id>spring-snapshots</id>
 			<name>Spring Snapshots</name>
-			<url>http://maven.springframework.org/snapshot</url>
+			<url>http://repo.spring.io/libs-snapshot</url>
 			<snapshots>
 				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>http://maven.springframework.org/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
 			</snapshots>
 		</repository>
 	</repositories>
@@ -68,18 +59,10 @@
 		<pluginRepository>
 			<id>spring-snapshots</id>
 			<name>Spring Snapshots</name>
-			<url>http://maven.springframework.org/snapshot</url>
+			<url>http://repo.spring.io/libs-snapshot</url>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
 		</pluginRepository>
-		<pluginRepository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>http://maven.springframework.org/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>	
+	</pluginRepositories>
 </project>
