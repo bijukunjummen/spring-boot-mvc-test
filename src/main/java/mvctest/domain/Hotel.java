@@ -24,7 +24,7 @@ public class Hotel implements Serializable {
 	@Column(nullable = false)
 	private String zip;
 
-	protected Hotel() {
+	public Hotel() {
 	}
 
 	public Hotel(String name) {
@@ -46,4 +46,20 @@ public class Hotel implements Serializable {
 	public String getZip() {
 		return this.zip;
 	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setZip(String zip) {
+		this.zip = zip;
+	}	
 }
