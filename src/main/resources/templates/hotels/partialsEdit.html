@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorator="layout/sitelayout">
+<head>
+    <title th:text="#{app.name}">List of Hotels</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap.min.css}"
+          href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap-theme.css}"
+          href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" th:href="@{/css/application.css}" href="../../static/css/application.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="well well-small">Hotels</h1>
+        </div>
+    </div>
+    <div th:fragment="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="name" class="col-xs-2">Name</label>
+
+                        <div class="col-xs-6">
+                            <input class="form-control" placeholder="Name" ng-model="hotel.name"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address" class="col-xs-2">Address</label>
+
+                        <div class="col-xs-6">
+                            <input class="form-control" placeholder="Address" ng-model="hotel.address"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="zip" class="col-xs-2">Zip</label>
+
+                        <div class="col-xs-6">
+                            <input class="form-control" placeholder="Zip" ng-model="hotel.zip"/>
+                        </div>
+                    </div>
+                    <a class="btn btn-default" ng-click="updateHotel()">Submit</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

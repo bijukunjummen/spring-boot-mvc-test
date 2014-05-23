@@ -5,6 +5,21 @@
 <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap.min.css}" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
 <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap-theme.css}" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.css" />
 <link rel="stylesheet" th:href="@{/css/application.css}" href="../../static/css/application.css" />
+<script th:src="@{/webjars/jquery/2.1.0/jquery.js}" src="jquery.js" > </script>
+<script th:src="@{/webjars/bootstrap/3.1.1/js/bootstrap.js}" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.js" > </script>
+<script th:src="@{/webjars/angularjs/1.3.0-beta.8/angular.min.js}" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js" > </script>
+<script th:src="@{/webjars/angularjs/1.3.0-beta.8/angular-resource.min.js}" src="#" > </script>
+<script th:src="@{/webjars/angular-ui-router/0.2.8/angular-ui-router.min.js}" src="#" > </script>
+<script th:inline="javascript">
+/*<![CDATA[*/
+    var URLS = {};
+    URLS.hotels = /*[[@{/hotels/rest/:id}]]*/ '/hotels/rest';
+    URLS.partialsList = /*[[@{/hotels/partialsList}]]*/ '/hotels/partialsList';
+    URLS.partialsEdit = /*[[@{/hotels/partialsEdit}]]*/ '/hotels/partialsEdit';
+    URLS.partialsCreate = /*[[@{/hotels/partialsCreate}]]*/ '/hotels/partialsCreate';    
+    /*]]>*/
+</script>
+<script  th:src="@{/js/app.js}" src="../../static/js/app.js" > </script>	
 </head>
 <body>
 	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -16,7 +31,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" th:href="@{/hotels}">Hotels Listing</a>
+			<a class="navbar-brand" href="#home">Hotels Listing</a>
 			</div>
 			<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
@@ -28,13 +43,6 @@
 		</div>
 	</div>
 	<div class="container-fluid">
-		<div class="row" th:if="${statusmessage != null}">
-			<div class="col-xs-12">
-				<div class="alert alert-success">
-					<span th:text="${statusmessage}">Status message</span>
-				</div>
-			</div>
-		</div>	
 		<div layout:fragment="content">
 			<h1>Static content for prototyping purposes only</h1>
 				<p>

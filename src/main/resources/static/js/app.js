@@ -1,0 +1,74 @@
+var app = angular.module("hotelsApp", ["ui.router", "ngResource"]);
+
+app.config(function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise("home");
+
+    $stateProvider
+        .state('home', {
+            url:'/home',
+            templateUrl: URLS.partialsList,
+            controller: 'HotelCtrl'
+        })
+        .state('edit', {
+            url:'/edit/:hotelId',
+            templateUrl: URLS.partialsEdit,
+            controller: 'HotelEditCtrl'
+        })
+        .state('create', {
+            url:'/create',
+            templateUrl: URLS.partialsCreate,
+            controller: 'HotelCtrl'
+        });
+});
+
+
+app.factory("Hotel", function ($resource) {
+    return $resource(URLS.hotels, {id: "@id"}, {
+        update: {
+            method: 'PUT',
+            params: {
+                articleId: "@articleId"
+            }
+        }
+    });
+});
+
+app.controller("HotelCtrl", function ($scope, Hotel, $state) {
+    function init() {
+        $scope.getHotels();
+    }
+
+
+    $scope.getHotels = function () {
+        $scope.hotels = Hotel.query();
+    };
+
+    $scope.deleteHotel = function (hotel) {
+        return hotel.$delete().then(function () {
+            $scope.hotels.splice($scope.hotels.indexOf(hotel), 1);
+        });
+    };
+
+    $scope.createHotel = function () {
+        var hotel = new Hotel($scope.hotel);
+        hotel.$save().then(function() {
+            $state.transitionTo("home");
+        });
+    };
+
+    init();
+});
+
+app.controller("HotelEditCtrl", function ($scope, Hotel, $state, $stateParams) {
+    function init() {
+        $scope.hotel = Hotel.get({id:$stateParams.hotelId})
+    }
+
+    $scope.updateHotel = function() {
+       var hotel = new Hotel($scope.hotel);
+       hotel.$update().then(function() {
+           $state.transitionTo("home");
+       }) ;
+    }
+    init();
+});

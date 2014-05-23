@@ -13,7 +13,7 @@
 				<h1 class="well well-small">Hotels</h1>
 			</div>
 		</div>
-		<div layout:fragment="content">
+		<div th:fragment="content">
 			<div class="row">
 				<div class="col-xs-12">
 					<table class="table table-bordered table-striped">
@@ -27,17 +27,12 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:if="${hotels.empty}">
-								<td colspan="5">No messages</td>
-							</tr>
-							<tr th:each="hotel : ${hotels}">
-								<td th:text="${hotel.id}">1</td>
-								<td th:text="${hotel.name}">Test Name 1</td>
-								<td th:text="${hotel.address}">Test Address 1</td>
-								<td th:text="${hotel.zip}">Test Zip 1</td>
-								<td><a th:href="@{/hotels/edit/__${hotel.id}__}" href="#">Edit</a>
-									| <a th:href="@{/hotels/delete/__${hotel.id}__}" href="#">Delete</a>
-								</td>
+							<tr ng-repeat="hotel in hotels">
+								<td>{{hotel.id}}</td>
+								<td>{{hotel.name}}</td>
+								<td>{{hotel.address}}</td>
+								<td>{{hotel.zip}}</td>
+								<td><a ui-sref="edit({ hotelId: hotel.id })">Edit</a> | <a ng-click="deleteHotel(hotel)">Delete</a></td>
 							</tr>
 						</tbody>
 					</table>
@@ -45,7 +40,7 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
-					<a href="#" th:href="@{/hotels?form=true}" class="btn btn-default">New Hotel</a>
+					<a ui-sref="create" class="btn btn-default">New Hotel</a>
 				</div>
 			</div>
 		</div>
