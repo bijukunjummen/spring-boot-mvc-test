@@ -8,6 +8,8 @@ import mvctest.domain.Hotel;
 import mvctest.service.HotelRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,8 +47,8 @@ public class RestHotelController {
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
-	public Boolean delete(@PathVariable("id") long id) {
+	public ResponseEntity<Boolean> delete(@PathVariable("id") long id) {
 		this.hotelRepository.delete(id);
-		return Boolean.TRUE;
+		return new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 	}
 }

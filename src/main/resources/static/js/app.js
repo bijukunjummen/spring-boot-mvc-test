@@ -25,10 +25,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 app.factory("Hotel", function ($resource) {
     return $resource(URLS.hotels, {id: "@id"}, {
         update: {
-            method: 'PUT',
-            params: {
-                articleId: "@articleId"
-            }
+            method: 'PUT'
         }
     });
 });
@@ -44,14 +41,14 @@ app.controller("HotelCtrl", function ($scope, Hotel, $state) {
     };
 
     $scope.deleteHotel = function (hotel) {
-        return hotel.$delete().then(function () {
+        return hotel.$delete({}, function () {
             $scope.hotels.splice($scope.hotels.indexOf(hotel), 1);
         });
     };
 
     $scope.createHotel = function () {
         var hotel = new Hotel($scope.hotel);
-        hotel.$save().then(function() {
+        hotel.$save({}, function() {
             $state.transitionTo("home");
         });
     };
