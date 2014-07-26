@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Version;
 
 @Entity
 public class Hotel implements Serializable {
@@ -23,6 +24,9 @@ public class Hotel implements Serializable {
 
 	@Column(nullable = false)
 	private String zip;
+
+	@Version
+	private long version;
 
 	public Hotel() {
 	}
@@ -61,5 +65,15 @@ public class Hotel implements Serializable {
 
 	public void setZip(String zip) {
 		this.zip = zip;
+	}
+
+	public long getVersion() {
+		return version;
+	}
+
+	public void setVersion(long version) {
+		this.version = version;
 	}	
+	
+	
 }
