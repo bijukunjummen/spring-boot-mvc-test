@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorator="layout/sitelayout">
+<head>
+    <title th:text="#{app.name}">List of Mappings</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap.min.css}"
+          href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap-theme.css}"
+          href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" th:href="@{/css/application.css}" href="../../static/css/application.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="well well-small">Mappings</h1>
+        </div>
+    </div>
+    <div th:fragment="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th width="50%">Path</th>
+                        <th width="10%">Bean</th>
+                        <th width="40%">Method</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="(k, v) in mappings">
+                        <td>{{k}}</td>
+                        <td>{{v.bean}}</td>
+                        <td>{{v.method}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

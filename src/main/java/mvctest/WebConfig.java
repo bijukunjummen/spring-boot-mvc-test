@@ -12,6 +12,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		registry.addViewController("/hotels/partialsList").setViewName("hotels/partialsList::content");
 		registry.addViewController("/hotels/partialsCreate").setViewName("hotels/partialsCreate::content");
 		registry.addViewController("/hotels/partialsEdit").setViewName("hotels/partialsEdit::content");
+		registry.addViewController("/mappings/partialsMappings").setViewName("mappings/partialsMappings::content");
 	}
 
 }

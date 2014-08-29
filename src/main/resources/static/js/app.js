@@ -8,16 +8,18 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url:'/home',
             templateUrl: URLS.partialsList,
             controller: 'HotelCtrl'
-        })
-        .state('edit', {
+        }).state('edit', {
             url:'/edit/:hotelId',
             templateUrl: URLS.partialsEdit,
             controller: 'HotelEditCtrl'
-        })
-        .state('create', {
+        }).state('create', {
             url:'/create',
             templateUrl: URLS.partialsCreate,
             controller: 'HotelCtrl'
+        }).state('endpoints', {
+            url: '/endpoints',
+            templateUrl: URLS.partialsMappings,
+            controller: 'MappingsCtrl'
         });
 });
 
@@ -28,6 +30,14 @@ app.factory("Hotel", function ($resource) {
             method: 'PUT'
         }
     });
+});
+
+app.factory("mappingsFactory", function($http) {
+    var factory = {};
+    factory.getMappings = function() {
+        return $http.get(URLS.mappingsUrl);
+    }
+    return factory;
 });
 
 app.controller("HotelCtrl", function ($scope, Hotel, $state) {
@@ -67,5 +77,15 @@ app.controller("HotelEditCtrl", function ($scope, Hotel, $state, $stateParams) {
            $state.transitionTo("home");
        }) ;
     }
+    init();
+});
+
+app.controller("MappingsCtrl", function($scope, $state, mappingsFactory) {
+    function init() {
+        mappingsFactory.getMappings().success(function(data) {
+           $scope.mappings = data;
+        });
+    }
+
     init();
 });
